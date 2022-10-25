@@ -14,31 +14,31 @@ build:
 	docker-compose -f docker-compose-${env}.yml build
 
 shell:
-	docker-compose -f docker-compose-${env}.yml exec -w /app ta5feed python manage.py shell
+	docker-compose -f docker-compose-${env}.yml exec -w /app core python manage.py shell
 
 bash:
-	docker-compose -f docker-compose-${env}.yml exec -w /app ta5feed bash
+	docker-compose -f docker-compose-${env}.yml exec -w /app core bash
 
 makemigrations:
-	docker-compose -f docker-compose-${env}.yml run --rm ta5feed python manage.py makemigrations
+	docker-compose -f docker-compose-${env}.yml run --rm core python manage.py makemigrations
 
 migrate:
-	docker-compose -f docker-compose-${env}.yml run --rm ta5feed python manage.py migrate
+	docker-compose -f docker-compose-${env}.yml run --rm core python manage.py migrate
 
 makemessages:
-	docker-compose -f docker-compose-${env}.yml run --rm ta5feed python manage.py makemessages --no-location -l ar
+	docker-compose -f docker-compose-${env}.yml run --rm core python manage.py makemessages --no-location -l ar
 
 compilemessages:
-	docker-compose -f docker-compose-${env}.yml run --rm ta5feed python manage.py compilemessages
+	docker-compose -f docker-compose-${env}.yml run --rm core python manage.py compilemessages
 
 logs:
 	docker-compose -f docker-compose-${env}.yml logs -f
 
 collectstatic:
-	docker-compose -f docker-compose-${env}.yml exec -w /app ta5feed python manage.py collectstatic --noinput
+	docker-compose -f docker-compose-${env}.yml exec -w /app core python manage.py collectstatic --noinput
 
 debug:
-	docker-compose -f docker-compose.local.yml run --service-ports --rm ta5feed
+	docker-compose -f docker-compose.local.yml run --service-ports --rm core
 
 down:
 	docker-compose -f docker-compose-${env}.yml down
